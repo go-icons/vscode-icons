@@ -20,6 +20,20 @@ func TestIconByExtension(t *testing.T) {
 	}
 }
 
+// TestTeXAndStyDiffer: a LaTeX document (.tex) and a LaTeX package/class
+// (.sty/.cls) — read apart from a document — get distinct glyphs.
+func TestTeXAndStyDiffer(t *testing.T) {
+	tex := Icon("paper.tex")
+	if !svgOK(tex) {
+		t.Fatal("Icon(paper.tex) returned no SVG")
+	}
+	for _, name := range []string{"pkg.sty", "book.cls"} {
+		if got := Icon(name); !svgOK(got) || got == tex {
+			t.Errorf("Icon(%q) should be a distinct config glyph, not the .tex icon", name)
+		}
+	}
+}
+
 // TestIconByName: a full base name (no useful extension) selects its icon.
 func TestIconByName(t *testing.T) {
 	for _, name := range []string{"LICENSE", "go.mod", ".gitignore", "path/to/go.sum", "package.json", "Dockerfile", "Makefile"} {

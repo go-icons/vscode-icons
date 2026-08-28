@@ -44,7 +44,7 @@ var byName = map[string]string{
 
 // byExt maps a lower-cased extension (with the dot) to an icon.
 var byExt = map[string]string{
-	".tex": "file_type_tex", ".sty": "file_type_tex", ".cls": "file_type_tex",
+	".tex": "file_type_tex", ".sty": "file_type_config", ".cls": "file_type_config",
 	".bib": "file_type_tex", ".dtx": "file_type_tex", ".ins": "file_type_tex",
 	".md": "file_type_markdown", ".markdown": "file_type_markdown",
 	".json": "file_type_json",
